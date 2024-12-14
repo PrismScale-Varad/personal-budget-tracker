@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("form");
     const categoryInput = document.getElementById("category");
     const amountInput = document.getElementById("amount");
     const typeSelect = document.getElementById("type");
@@ -9,9 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("expenses", JSON.stringify([]));
     }
 
-    form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent page reload
-
+    // Function to handle form submission
+    window.addExpense = () => {
         // Retrieve inputs
         const category = categoryInput.value.trim();
         const amount = parseFloat(amountInput.value);
@@ -36,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Add the new expense to the list
         expenses.push(expense);
-        console.log("Added expense");
+
         // Save updated expenses back to localStorage
         localStorage.setItem("expenses", JSON.stringify(expenses));
 
@@ -49,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Optional: Log current expenses to console
         logExpenses();
-    });
+    };
 
     // Function to log all expenses to the console
     function logExpenses() {
