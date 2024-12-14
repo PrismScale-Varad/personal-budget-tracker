@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Add the new expense to the list
         expenses.push(expense);
-
+        console.log("Added expense");
         // Save updated expenses back to localStorage
         localStorage.setItem("expenses", JSON.stringify(expenses));
 
