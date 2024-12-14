@@ -8,19 +8,19 @@
     <body>
         <div class="flex flex-col min-h-screen bg-gray-950 text-gray-500 items-center py-8 gap-4 px-2">
             <h1 class="text-4xl text-gray-50">Budget Tracker</h1>
-            <form class="flex flex-col max-w-screen-sm mt-10 rounded-2xl w-full bg-gray-600 p-4 px-8 gap-4">
+            <form class="flex flex-col max-w-screen-sm mt-10 rounded-2xl w-full bg-gray-700 p-4 px-8 gap-4">
                 <h1 class="text-2xl text-gray-100 self-center">Add an expense</h1>
                 <p class="text-lg text-gray-200">Category</p>
-                <input name="category" id="category" class="p-2 rounded-md" placeholder="Category of your purchase">
+                <input name="category" id="category" class="p-2 rounded-md bg-gray-600 text-gray-300 shadow-md border-2 border-blue-900 transition-all duration-300 focus:bg-gray-900 hover:text-blue-200 hover:bg-gray-800" placeholder="Category of your purchase">
                 <p class="text-lg text-gray-200 px-1">Amount</p>
-                <input name="amount" id="amount" class="p-2 rounded-md" placeholder="Amount">
+                <input name="amount" id="amount" class="p-2 rounded-md bg-gray-600 text-gray-300 shadow-md border-2 border-blue-900 transition-all duration-300 focus:bg-gray-900 hover:text-blue-200 hover:bg-gray-800" placeholder="Amount">
                 <p class="text-lg text-gray-200">Type of transaction</p>
-                <select name="type" id="type" class="p-2 rounded-md">
+                <select name="type" id="type" class="p-2 rounded-md bg-gray-600 text-gray-300 shadow-md border-2 border-blue-900 transition-all duration-300 focus:bg-gray-900 hover:text-blue-200 hover:bg-gray-800">
                     <option>Select</option>
                     <option>Income</option>
                     <option>Expense</option>
                 </select>
-                <button class="rounded-2xl text-blue-400 border-2 border-blue-900 shadow-md p-2 bg-gray-700 mt-4 transition-all duration-1000 hover:rounded-full hover:border-blue-400 hover:text-blue-200 hover:bg-gray-800 focus:scale-95">Submit</button>
+                <button class="rounded-full text-gray-300 border-2 border-blue-900 shadow-md p-2 bg-gray-600 mt-4 transition-all duration-300 hover:border-blue-400 hover:text-blue-200 hover:bg-gray-800 focus:bg-gray-900">Submit</button>
             </form>
         </div>
     </body>
