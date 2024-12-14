@@ -8,7 +8,7 @@
     <body>
         <div class="flex flex-col min-h-screen bg-gray-950 text-gray-500 items-center py-8 gap-4 px-2">
             <h1 class="text-4xl text-gray-50">Budget Tracker</h1>
-            <form class="flex flex-col max-w-screen-sm mt-10 rounded-2xl w-full bg-gray-700 p-4 px-8 gap-4">
+            <div class="flex flex-col max-w-screen-sm mt-10 rounded-2xl w-full bg-gray-700 p-4 px-8 gap-4">
                 <h1 class="text-2xl text-gray-100 self-center">Add an expense</h1>
                 <p class="text-lg text-gray-200">Category</p>
                 <input name="category" id="category" class="p-2 rounded-md bg-gray-600 text-gray-300 shadow-md border-2 border-blue-900 transition-all duration-300 focus:bg-gray-900 hover:text-blue-200 hover:bg-gray-800" placeholder="Category of your purchase">
@@ -21,7 +21,7 @@
                     <option>Expense</option>
                 </select>
                 <button onclick="addExpense()" class="rounded-full text-gray-300 border-2 border-blue-900 shadow-md p-2 bg-gray-600 mt-4 transition-all duration-300 hover:border-blue-400 hover:text-blue-200 hover:bg-gray-800 focus:bg-gray-900">Submit</button>
-            </form>
+            </div>
         </div>
         <script src="https://raw.githubusercontent.com/PrismScale-Varad/personal-budget-tracker/refs/heads/master/scripts.js"></script>
     </body>
