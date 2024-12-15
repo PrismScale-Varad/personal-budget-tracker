@@ -4,11 +4,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const categoryInput = document.getElementById("category");
     const amountInput = document.getElementById("amount");
     const typeSelect = document.getElementById("type");
+    const expenseList = document.getElementById("expense-list");
 
     // Initialize localStorage if it doesn't exist
     if (!localStorage.getItem("expenses")) {
         console.log("Initializing localStorage for expenses.");
         localStorage.setItem("expenses", JSON.stringify([]));
+    }
+
+    // Function to render the list of expenses
+    function renderExpenses() {
+        console.log("Rendering expenses...");
+        const expenses = JSON.parse(localStorage.getItem("expenses"));
+        expenseList.innerHTML = ""; // Clear the list first
+        expenses.forEach((expense, index) => {
+            const expenseItem = document.createElement("div");
+            expenseItem.className = "p-2 bg-gray-600 text-gray-300 rounded-md shadow-md flex justify-between items-center mb-2";
+
+            expenseItem.innerHTML = `
+                <div>
+                    <p><strong>Category:</strong> ${expense.category}</p>
+                    <p><strong>Amount:</strong> ₹${expense.amount.toFixed(2)}</p>
+                    <p><strong>Type:</strong> ${expense.type}</p>
+                    <p><strong>Date:</strong> ${new Date(expense.date).toLocaleString()}</p>
+                </div>
+                <button class="text-red-500 hover:underline" onclick="deleteExpense(${index})">Delete</button>
+            `;
+            expenseList.appendChild(expenseItem);
+        });
     }
 
     // Function to handle form submission
@@ -17,13 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Retrieve inputs
         const category = categoryInput.value.trim();
-        console.log("Category:", category);
-
         const amount = parseFloat(amountInput.value);
-        console.log("Amount:", amount);
-
         const type = typeSelect.value;
-        console.log("Type:", type);
 
         // Validate inputs
         if (!category || isNaN(amount) || type === "Select") {
@@ -32,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        console.log("Validation passed.");
-
         // Create an expense object
         const expense = {
             category,
@@ -41,38 +57,36 @@ document.addEventListener("DOMContentLoaded", () => {
             type,
             date: new Date().toISOString(),
         };
-        console.log("Expense object created:", expense);
 
         // Retrieve existing expenses from localStorage
         const expenses = JSON.parse(localStorage.getItem("expenses"));
-        console.log("Current expenses from localStorage:", expenses);
 
         // Add the new expense to the list
         expenses.push(expense);
-        console.log("New expense added to the list.");
 
         // Save updated expenses back to localStorage
         localStorage.setItem("expenses", JSON.stringify(expenses));
-        console.log("Expenses saved to localStorage.");
 
         // Clear the form inputs
         categoryInput.value = "";
         amountInput.value = "";
         typeSelect.value = "Select";
-        console.log("Form inputs cleared.");
 
         alert("Expense added successfully!");
 
-        // Optional: Log current expenses to console
-        logExpenses();
+        // Re-render the expenses list
+        renderExpenses();
     };
 
-    // Function to log all expenses to the console
-    function logExpenses() {
+    // Function to delete an expense
+    window.deleteExpense = (index) => {
+        console.log(`Deleting expense at index ${index}`);
         const expenses = JSON.parse(localStorage.getItem("expenses"));
-        console.log("Current Expenses:", expenses);
-    }
+        expenses.splice(index, 1); // Remove the expense at the given index
+        localStorage.setItem("expenses", JSON.stringify(expenses)); // Save updated list
+        renderExpenses(); // Re-render the expenses
+    };
 
-    // Example: Uncomment the line below to log expenses on page load
-    logExpenses();
+    // Initial render of expenses on page load
+    renderExpenses();
 });
