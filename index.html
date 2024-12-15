@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="./scripts.js"></script>
     </head>
@@ -22,6 +22,12 @@
                     <option>Expense</option>
                 </select>
                 <button onclick="addExpense()" class="rounded-full text-gray-300 border-2 border-blue-900 shadow-md p-2 bg-gray-600 mt-4 transition-all duration-300 hover:border-blue-400 hover:text-blue-200 hover:bg-gray-800 focus:bg-gray-900">Submit</button>
+            </div>
+
+            <!-- Section for displaying the list of expenses -->
+            <div id="expense-list" class="flex flex-col max-w-screen-sm mt-10 w-full bg-gray-700 p-4 px-8 gap-2 rounded-2xl">
+                <h2 class="text-xl text-gray-100 mb-4">Your Expenses</h2>
+                <!-- Expense items will be dynamically added here -->
             </div>
         </div>
     </body>
